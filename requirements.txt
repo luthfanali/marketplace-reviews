@@ -1,0 +1,6 @@
+ensure
+joblib
+python-box
+pyyaml
+numpy
+-e .
