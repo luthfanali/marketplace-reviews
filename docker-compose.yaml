@@ -1,0 +1,88 @@
+services:    
+  app-dev:
+    build: ./
+    container_name: app-dev
+    restart: unless-stopped
+    hostname: app-dev
+    ports:
+      - 8000:8000
+    networks:
+      - app-net
+    env_file:
+      - .env
+
+  app-stg-0:
+    build: ./
+    container_name: app-stg-0
+    restart: unless-stopped
+    hostname: app-stg-0
+    ports:
+      - 8000:8000
+    networks:
+      - app-net
+    env_file:
+      - .env
+
+  app-stg-1:
+    build: ./
+    container_name: app-stg-1
+    restart: unless-stopped
+    hostname: app-stg-1
+    ports:
+      - 8001:8000
+    networks:
+      - app-net
+    env_file:
+      - .env
+
+  app-stg-2:
+    build: ./
+    container_name: app-stg-2
+    restart: unless-stopped
+    hostname: app-stg-2
+    ports:
+      - 8002:8000
+    networks:
+      - app-net
+    env_file:
+      - .env
+
+  app-prd-0:
+    image: ${APP_IMAGE}:${APP_TAG}
+    container_name: app-prd-0
+    restart: unless-stopped
+    hostname: app-prd-0
+    ports:
+      - 8000:8000
+    networks:
+      - app-net
+    env_file:
+      - .env
+
+  app-prd-1:
+    image: ${APP_IMAGE}:${APP_TAG}
+    container_name: app-prd-1
+    restart: unless-stopped
+    hostname: app-prd-1
+    ports:
+      - 8001:8000
+    networks:
+      - app-net
+    env_file:
+      - .env
+
+  app-prd-2:
+    image: ${APP_IMAGE}:${APP_TAG}
+    container_name: app-prd-2
+    restart: unless-stopped
+    hostname: app-prd-2
+    ports:
+      - 8002:8000
+    networks:
+      - app-net
+    env_file:
+      - .env
+
+networks:
+  app-net:
+    driver: bridge
