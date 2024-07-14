@@ -1,8 +1,8 @@
-from MLProject import logger
-from MLProject.pipeline.stage_01_data_ingestion import DataIngestionPipeline
-from MLProject.pipeline.stage_02_preprocessing import PreprocessingPipeline
-from MLProject.pipeline.stage_03_train_model import TrainingPipeline
-from MLProject.pipeline.stage_04_model_evaluation import TrainEvaluationPipeline
+from MarketplaceReviews import logger
+from MarketplaceReviews.pipeline.stage_01_data_ingestion import DataIngestionPipeline
+from MarketplaceReviews.pipeline.stage_02_preprocessing import PreprocessingPipeline
+from MarketplaceReviews.pipeline.stage_03_train_model import TrainingPipeline
+from MarketplaceReviews.pipeline.stage_04_model_evaluation import TrainEvaluationPipeline
 
 STAGE_NAME = "Data Ingestion"
 
@@ -24,7 +24,8 @@ try:
     logger.info(f">>>>>>> Stage {STAGE_NAME} Started <<<<<<< ".upper())
     
     obj = PreprocessingPipeline()
-    obj.pipeline()
+    obj.dump_data_pipeline()
+    obj.preprocessing_pipeline()
     
     logger.info(f">>>>>>> Stage {STAGE_NAME} Completed <<<<<<< ]\n\n".upper())
 except Exception as e:

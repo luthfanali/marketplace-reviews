@@ -1,0 +1,54 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    restart: unless-stopped
+    hostname: postgres
+    ports:
+      - 5432:5432
+    networks:
+      - mlops-net
+    volumes:
+      - mlops-pg-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+  
+  minio:
+    image: docker.io/bitnami/minio:2024
+    container_name: minio
+    restart: unless-stopped
+    hostname: minio
+    ports:
+      - 9000:9000
+      - 9001:9001
+    networks:
+      - mlops-net
+    volumes:
+      - mlops-minio-data:/data
+    env_file:
+      - .env
+    
+  mlflow:
+    image: mlops-mlflow:0.0.1
+    build: ./docker
+    container_name: mlflow
+    restart: unless-stopped
+    hostname: mlflow
+    ports:
+      - 5000:5000
+    networks:
+      - mlops-net
+    env_file:
+      - .env
+
+networks:
+  mlops-net:
+    driver: bridge
+
+volumes:
+  mlops-pg-data:
+    name: mlops-pg-data
+    driver: local
+  mlops-minio-data:
+    name: mlops-minio-data
+    driver: local

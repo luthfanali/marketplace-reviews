@@ -5,17 +5,17 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 __version__ = "0.0.1"
 
-REPO_NAME = "machine-learning-project-template"
-AUTHOR_USER_NAME = "rohwid"
-SRC_REPO = "MLProject"
-AUTHOR_EMAIL = "rohwid@gmail.ai"
+REPO_NAME = "marketplace-reviews"
+AUTHOR_USER_NAME = "luthfanali"
+SRC_REPO = "marketplace-reviews"
+AUTHOR_EMAIL = "mail@luthfanali.com"
 
 setuptools.setup(
     name = SRC_REPO,
     version = __version__,
     author = AUTHOR_USER_NAME,
     author_email = AUTHOR_EMAIL,
-    description = "A python package for Lazada Indonesia Review project",
+    description = "A python package for Tokopedia and Shopee Indonesia Review project",
     long_description = long_description,
     long_description_content = "text/markdown",
     url = f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
