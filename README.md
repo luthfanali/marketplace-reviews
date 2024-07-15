@@ -127,4 +127,20 @@ Dataset yang digunakan dalam project kali ini adalah dataset dari kaggle: [Datas
   
   ![Proses CI berhasil](./others/img/ci_berhasil.png)
 
-
+### Integrasi CD
+- Buat branch baru
+  
+  ```
+  git checkout -b feat/enable-cd-staging
+  ``` 
+- Buat pipeline untuk CD berupa `cd-staging.yaml` dan masukkan dalam `.github/workflows`
+- Commit perubahan dalam branch `feat/enable-cd-staging`
+- Lalu push ke Github
+- Pada pengaturan repository, tambahkan **Secret** dan **Vars** yang dibutuhkan sesuai dengan pipeline `cd-staging.yaml`
+- Lakukan Pull Request
+- Tunggu hingga proses testing dan deploying selesai
+  
+  ![Sukses terdeploy ke STG Server](./others/img/sukses_deploy_ke_stg.png)
+- Coba lakukan test API ke Server Staging
+  
+  ![Sukses hit API ke STG](./others/img/sukses_hit_API.png)
