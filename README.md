@@ -144,3 +144,45 @@ Dataset yang digunakan dalam project kali ini adalah dataset dari kaggle: [Datas
 - Coba lakukan test API ke Server Staging
   
   ![Sukses hit API ke STG](./others/img/sukses_hit_API.png)
+
+### Integrasi CD Push to Docker Registry dan App Versioning
+#### Setup Repo Docker dan Key
+- Pada akun Docker Hub, buat sebuah private repository baru bernama `marketplace-reviews`
+- Kemudian buat credentials di [link ini](https://hub.docker.com/settings/security). Catat credentials yang didapat.
+#### Buat branch `feat/enable-cd-push-registry` dan Push ke Github
+- Buat branch baru
+  
+  ```
+  git checkout -b feat/enable-cd-push-registry
+  ``` 
+- Buat pipeline untuk CD berupa `cd-push-registry.yaml` dan masukkan dalam `.github/workflows`
+- Commit perubahan dalam branch `feat/enable-cd-push-registry`
+- Buka repository Github. Pada pengaturan repository, tambahkan **Secret** dan **Vars** yang dibutuhkan sesuai dengan pipeline `cd-push-registry.yaml`
+- Lalu push ke Github
+- Lakukan Pull Request
+- Merge
+#### Release aplikasi
+- Pastikan berada pada branch `master` dan lakukan `git pull`
+- Github Workflows `cd-push-registry.yaml` ini akan otomatis tereksekusi ketika ada tags apapun di Repo Github
+- Buat tags
+  
+  ```
+  git tag -a "0.0.1" -m "release version 0.0.1"
+  ```
+- Untuk melihat semua tags
+  
+  ```
+  git tags --list
+  ```
+- Push tags ke Repo Github
+  
+  ```
+  git push -u origin 0.0.1
+  ```
+- Setelah dilakukan push, terlihat bahwa Pipeline CD Push Registry dijalankan. Tunggu hingga selesai.
+  
+  ![Github Action CD Pus Registry berhasil dijalankan](./others/img/cd_push_to_docker_hub.png)
+
+- Cek di akun Docker Hub, telah ada docker image hasil dari `cd-push-registry.yaml`. 
+  
+  ![Hasil push ke Docker Hub](./others/img/docker_image_berhasil_dipush.png)
