@@ -13,7 +13,7 @@ app = FastAPI()
 config = ConfigurationManager()
 
 class Item(BaseModel):
-    reviewContents: list
+    review: list
 
 @app.get("/")
 def read_root():
@@ -26,6 +26,6 @@ def predict(item: Item):
     predict = Predict(config=predict_config)
     
     logging.info("Make prediction.")
-    result = predict.run(item.reviewContents)
+    result = predict.run(item.review)
     
     return result
