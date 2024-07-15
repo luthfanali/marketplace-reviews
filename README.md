@@ -30,8 +30,14 @@ Dataset yang digunakan dalam project kali ini adalah dataset dari kaggle: [Datas
 - Buat database baru bernama `marketplace_reviews` di Postgress
 
 ### Instance #2
+- Setup server AWS, t3a micro.
+- Generate SSH Key, lalu tambahkan public key ke dalam Github Key
+- Install docker di dalamnya
 
 ### Instance #3
+- Setup server AWS, t3a micro.
+- Generate SSH Key, lalu tambahkan public key ke dalam Github Key
+- Install docker di dalamnya
 
 
 ## Setup Repository
@@ -98,4 +104,27 @@ Dataset yang digunakan dalam project kali ini adalah dataset dari kaggle: [Datas
 - Diperoleh hasil seperti di bawah ini 
 
     ![Hasil model](./others/img/perbandingan_model.png)
+
+- Pilih model yang terbaik, lalu tambahkan alias `development` dan `staging`
+
+## Setup CI/CD
+
+### Integrasi CI
+- Buat branch baru
+  
+  ```
+  git checkout -b feat/enable-ci-unittest
+  ``` 
+- Buat pipeline untuk CI berupa `ci.yaml` dan masukkan dalam `.github/workflows`
+- Commit perubahan dalam branch `feat/enable-ci-unittest`
+- Lalu push ke Github
+- Lakukan Pull Request
+- Tunggu hingga proses testing selesai
+  
+  ![Proses CI unit test](./others/img/proses_ci.png)
+
+- Lakukan merge apabila testing berhasil
+  
+  ![Proses CI berhasil](./others/img/ci_berhasil.png)
+
 
