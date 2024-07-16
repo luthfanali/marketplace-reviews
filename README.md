@@ -3,6 +3,7 @@
 ![workflow status](https://github.com/luthfanali/marketplace-reviews/actions/workflows/ci.yaml/badge.svg)
 ![workflow status](https://github.com/luthfanali/marketplace-reviews/actions/workflows/cd-staging.yaml/badge.svg)
 ![workflow status](https://github.com/luthfanali/marketplace-reviews/actions/workflows/cd-push-registry.yaml/badge.svg)
+![workflow status](https://github.com/luthfanali/marketplace-reviews/actions/workflows/cd-production.yaml/badge.svg)
 
 ## Dataset dan Model
 
@@ -186,3 +187,7 @@ Dataset yang digunakan dalam project kali ini adalah dataset dari kaggle: [Datas
 - Cek di akun Docker Hub, telah ada docker image hasil dari `cd-push-registry.yaml`. 
   
   ![Hasil push ke Docker Hub](./others/img/docker_image_berhasil_dipush.png)
+
+- Kemudian pada repo Github buat **New Release**
+- Pilih versi yang ingin di release
+- Tunggu hingga proses github action selesai dan terdeploy ke Production Server
