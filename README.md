@@ -108,7 +108,24 @@ Dataset yang digunakan dalam project kali ini adalah dataset dari kaggle: [Datas
 
 - Pilih model yang terbaik, lalu tambahkan alias `development` dan `staging`
 
-## Setup CI/CD
+## Unit test in Local
+- Buat unit test pada `test.py` untuk memastikan hasil output keluaran sesuai dengan yang diharapkan
+- Jalankan API local dengan perintah
+ 
+  ```
+  fastapi dev app.py
+  ```
+- Kemudian jalankan `test.py` dengan perintah
+  
+  ```
+  python test.py
+  ```
+- Hasil unit test pada local computer
+  
+  ![Hasil unit test yang telah dijalankan](./others/img/unit_test_sukses.png)
+
+
+## Setup CI/CD and Deployment using CI/CD
 
 ### Integrasi CI
 - Buat branch baru
@@ -162,7 +179,7 @@ Dataset yang digunakan dalam project kali ini adalah dataset dari kaggle: [Datas
 - Lalu push ke Github
 - Lakukan Pull Request
 - Merge
-#### Release aplikasi
+#### Release aplikasi dan deploy ke Production Server
 - Pastikan berada pada branch `master` dan lakukan `git pull`
 - Github Workflows `cd-push-registry.yaml` ini akan otomatis tereksekusi ketika ada tags apapun di Repo Github
 - Buat tags
